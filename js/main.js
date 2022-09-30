@@ -174,8 +174,7 @@ modalClodeBtn = document.querySelector('[data-close]')
 
 function hide_modal(){
     modal.classList.add('hide'),
-    modal.classList.remove('show'),
-    document.body.style.overflow = ''
+    modal.classList.remove('show')
 }
 modalTrigger.addEventListener('click', ()=>{
     modal.classList.add('show'),
@@ -183,18 +182,27 @@ modalTrigger.addEventListener('click', ()=>{
     document.body.style.overflow = 'hidden'
 })
 
-modalClodeBtn.addEventListener('click', hide_modal())
+modalClodeBtn.addEventListener('click', ()=>{
+    hide_modal(),
+    document.body.style.overflow = ''
+
+
+
+})
 
 
 document.addEventListener('click', (e)=>{
     if(e.target == modal){
     hide_modal();
-
+    document.body.style.overflow = '';
+    modal_status.innerHTML="";
     }})
 
     document.addEventListener('keydown', (e)=>{
         if(e.code == 'Escape'){
         hide_modal();
+        document.body.style.overflow = '';
+        modal_status.innerHTML="";
 
         }})
 
@@ -207,23 +215,20 @@ document.addEventListener('click', (e)=>{
             }
 
                 modalClodeBtn.addEventListener('click', ()=>{
-                    modal.classList.add('hide'),
-    modal.classList.remove('show'),
+            hide_modal()
     document.body.style.overflow = 'scroll'
                 })
 
 
          document.addEventListener('click', (e)=>{
                 if(e.target == modal){
-                    modal.classList.add('hide'),
-                    modal.classList.remove('show'),
+                    hide_modal()
                     document.body.style.overflow = 'scroll'
                 }})
 
         document.addEventListener('keydown', (e)=>{
             if(e.code == 'Escape'){
-                modal.classList.add('hide'),
-                modal.classList.remove('show'),
+                hide_modal();
                 document.body.style.overflow = 'scroll'
             }})
         };
@@ -246,6 +251,7 @@ modal_input.addEventListener('input', ()=>{
         }
     })
 })
+
 
 
 
